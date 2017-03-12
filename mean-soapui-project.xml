@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ae81140d-6409-43b9-a104-da74506e208a" activeEnvironment="Default" name="mean" resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="4bd8952d-cf1c-4b15-8533-520256a160d9" wsaVersion="NONE" name="meanServiceBinding" type="wsdl" bindingName="{http://nl.hu.iac/meanservice/}meanServiceBinding" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Philip/Documents/HU/Jaar%202/Blok%203/Integration%20&amp;%20Communication/mean/src/main/webapp/WEB-INF/wsdl/meanservice.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Philip\Documents\HU\Jaar%202\Blok%203\Integration%20&amp;%20Communication\mean\src\main\webapp\WEB-INF\wsdl\meanservice.wsdl"><con:part><con:url>file:\C:\Users\Philip\Documents\HU\Jaar%202\Blok%203\Integration%20&amp;%20Communication\mean\src\main\webapp\WEB-INF\wsdl\meanservice.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MeanService" targetNamespace="http://nl.hu.iac/meanservice/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:req="http://nl.hu.iac/meanservice/request" xmlns:rsp="http://nl.hu.iac/meanservice/response" xmlns:flt="http://nl.hu.iac/meanservice/fault" xmlns="http://nl.hu.iac/meanservice/">
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://nl.hu.iac/meanservice/request" schemaLocation="meanrequest.xsd"/>
+      <xsd:import namespace="http://nl.hu.iac/meanservice/response" schemaLocation="meanresponse.xsd"/>
+      <xsd:import namespace="http://nl.hu.iac/meanservice/fault" schemaLocation="fault.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="request">
+    <wsdl:part name="request" element="req:meanRequest"/>
+  </wsdl:message>
+  <wsdl:message name="response">
+    <wsdl:part name="response" element="rsp:meanResponse"/>
+  </wsdl:message>
+  <wsdl:message name="fault">
+    <wsdl:part name="fault" element="flt:meanFault"/>
+  </wsdl:message>
+  <wsdl:portType name="meanServiceInterface">
+    <wsdl:operation name="calculateMean">
+      <wsdl:input message="request"/>
+      <wsdl:output message="response"/>
+      <wsdl:fault name="fault" message="fault"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="meanServiceBinding" type="meanServiceInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculateMean">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="meanServiceService">
+    <wsdl:port name="WS-Port" binding="meanServiceBinding">
+      <soap:address location="http://localhost:8080/soap"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\Philip\Documents\HU\Jaar%202\Blok%203\Integration%20&amp;%20Communication\mean\src\main\webapp\WEB-INF\wsdl\meanrequest.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://nl.hu.iac/meanservice/request" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nl.hu.iac/meanservice/request">
+  <!--Hier wordt het request-element gedefineerd als een XML list.
+	Hiervoor wordt eerst een list aangemaakt als simpleType, waarin integer als itemType wordt opgegeven als restrictie.
+	Hierna wordt het meanRequest element aangemaakt, welke refereert naar het daarvoor aangemaakte type.-->
+  <xs:element name="meanRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="valuelist" type="xs:integer" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\Philip\Documents\HU\Jaar%202\Blok%203\Integration%20&amp;%20Communication\mean\src\main\webapp\WEB-INF\wsdl\meanresponse.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" targetNamespace="http://nl.hu.iac/meanservice/response" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nl.hu.iac/meanservice/response">
+  <!--Hier wordt het response element gedefineerd, ookal is het in principe alleen een getal. Decimal ipv integer om afrondingsfouten te omzeilen.-->
+  <xs:element name="meanResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="mean" type="xs:decimal"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:\C:\Users\Philip\Documents\HU\Jaar%202\Blok%203\Integration%20&amp;%20Communication\mean\src\main\webapp\WEB-INF\wsdl\fault.xsd</con:url><con:content><![CDATA[<schema elementFormDefault="qualified" targetNamespace="http://nl.hu.iac/meanservice/fault" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://nl.hu.iac/meanservice/fault">
+  <element name="meanFault">
+    <complexType>
+      <annotation>
+        <documentation>message is niet voor de gebruiker, kan ook null zijn</documentation>
+      </annotation>
+      <sequence>
+        <element name="errorCode" nillable="false" type="short"/>
+        <element maxOccurs="1" minOccurs="0" name="message" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/soap</con:endpoint></con:endpoints><con:operation id="d7e7f291-f435-4106-a2fb-ca6427addd61" isOneWay="false" action="" name="calculateMean" bindingOperationName="calculateMean" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ad6673f8-474e-4555-aee2-afb513d09665" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+         <req:valuelist>1</req:valuelist>\r
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://nl.hu.iac/meanservice/meanServiceInterface/calculateMeanRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="a57cd331-ca1a-4a14-9732-182a14b7ff09" name="meanServiceBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="5d9f3a76-5e93-4d26-bb47-3ef83e89f33f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="calculateMean TestCase" searchProperties="true"><con:settings/><con:testStep type="request" id="2eb06d5f-833b-488f-99ff-5311a1f722dd" name="calculateMean"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>meanServiceBinding</con:interface><con:operation>calculateMean</con:operation><con:request name="calculateMean" id="84925654-f8a1-49c8-8772-43310157388f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+         <req:valuelist>6</req:valuelist>\r
+         <req:valuelist>5</req:valuelist>
+         <req:valuelist>5</req:valuelist>
+         <req:valuelist>4</req:valuelist>
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="http://nl.hu.iac/meanservice/meanServiceInterface/calculateMeanRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="calculateStringMean" id="609e28d1-efa1-4ee4-91b9-ce709e2d10ae"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>meanServiceBinding</con:interface><con:operation>calculateMean</con:operation><con:request name="calculateStringMean" id="2e7170ad-3911-4923-b384-eb715a016f2e"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+         <req:valuelist>banaan</req:valuelist>\r
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="be5d7d9c-5c39-4b64-bb48-7a4b6f9d235c"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="calculateEmptyMean" id="fffb8f0b-aeb3-4c9c-89f3-de706b5c78c4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>meanServiceBinding</con:interface><con:operation>calculateMean</con:operation><con:request name="calculateEmptyMean" id="24a7b558-0f1a-48a5-a237-aeda4f89e2d8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1e9ad2f1-0f62-4540-9a6e-86df313a8870"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="calculateNegativeMean" id="82c9e8eb-6a7b-4174-882c-3d1cf94e9144"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>meanServiceBinding</con:interface><con:operation>calculateMean</con:operation><con:request name="calculateNegativeMean" id="526f91a9-ee0f-4c0e-82f4-f705fe7b1756"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+         <req:valuelist>-1</req:valuelist>\r
+         <req:valuelist>-1</req:valuelist>
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4e7c8d4d-5e0d-47c6-aaaa-5f146939de91"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
