@@ -118,4 +118,20 @@
          <req:valuelist>-1</req:valuelist>
       </req:meanRequest>\r
    </soapenv:Body>\r
-</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4e7c8d4d-5e0d-47c6-aaaa-5f146939de91"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4e7c8d4d-5e0d-47c6-aaaa-5f146939de91"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="calculateMean2" id="43cfacab-ffa9-4873-8b29-f37a75c7f6c4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>meanServiceBinding</con:interface><con:operation>calculateMean</con:operation><con:request name="calculateMean2" id="4849e53c-9791-41a4-af88-41ebc65a5d00"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/soap</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:req="http://nl.hu.iac/meanservice/request">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <req:meanRequest>\r
+         <!--1 or more repetitions:-->\r
+         <req:valuelist>1</req:valuelist>\r
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+         <req:valuelist>1</req:valuelist>
+      </req:meanRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ccf1360c-08ac-4e86-9d61-f3a3cdfdc5c0"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
