@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:tns="http://nl.hu.iac/meanservice/request"
+		elementFormDefault="qualified" 
+		targetNamespace="http://nl.hu.iac/meanservice/request">
+
+	<!--Hier wordt het request-element gedefineerd als een XML list.
+	Hiervoor wordt eerst een list aangemaakt als simpleType, waarin integer als itemType wordt opgegeven als restrictie.
+	Hierna wordt het meanRequest element aangemaakt, welke refereert naar het daarvoor aangemaakte type.-->
+	<xs:element name="meanRequest">
+		<xs:complexType>
+			<xs:sequence>
+			<xs:element name="valuelist" type="xs:integer" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

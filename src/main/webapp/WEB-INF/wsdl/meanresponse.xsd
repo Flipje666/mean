@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:tns="http://nl.hu.iac/meanservice/response"
+		elementFormDefault="qualified" 
+		targetNamespace="http://nl.hu.iac/meanservice/response">
+
+<!--Hier wordt het response element gedefineerd, ookal is het in principe alleen een getal. Decimal ipv integer om afrondingsfouten te omzeilen.-->
+	<xs:element name="meanResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="mean" type="xs:decimal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+</xs:schema>

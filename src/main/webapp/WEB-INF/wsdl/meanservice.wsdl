@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+	name="MeanService"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:req="http://nl.hu.iac/meanservice/request"
+	xmlns:rsp="http://nl.hu.iac/meanservice/response"
+	xmlns:flt="http://nl.hu.iac/meanservice/fault"
+	xmlns="http://nl.hu.iac/meanservice/"
+	targetNamespace="http://nl.hu.iac/meanservice/">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://nl.hu.iac/meanservice/request"
+				schemaLocation="meanrequest.xsd"/>
+			<xsd:import namespace="http://nl.hu.iac/meanservice/response"
+				schemaLocation="meanresponse.xsd"/>
+			<xsd:import namespace="http://nl.hu.iac/meanservice/fault"
+				schemaLocation="fault.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="request">
+		<wsdl:part name="request" element="req:meanRequest"/>
+	</wsdl:message>
+	<wsdl:message name="response">
+		<wsdl:part name="response" element="rsp:meanResponse"/>
+	</wsdl:message>
+	<wsdl:message  name="fault">
+		<wsdl:part element="flt:meanFault" name="fault"/>
+	</wsdl:message>
+
+	<wsdl:portType name="meanServiceInterface">
+		<wsdl:operation name="calculateMean">
+			<wsdl:input message="request"/>
+			<wsdl:output message="response"/>
+			<wsdl:fault message="fault" name="fault"/>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="meanServiceBinding" type="meanServiceInterface">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="calculateMean">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+			<wsdl:fault name="fault">
+				<soap:fault use="literal" name="fault"/>
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="meanServiceService">
+		<wsdl:port name="WS-Port" binding="meanServiceBinding">
+			<soap:address location="http://localhost:8080/soap"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

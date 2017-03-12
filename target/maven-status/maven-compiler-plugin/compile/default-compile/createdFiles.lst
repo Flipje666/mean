@@ -1,0 +1,10 @@
+nl\hu\iac\wsinterface\Fault.class
+nl\hu\iac\wsinterface\package-info.class
+nl\hu\iac\wsinterface\MeanServiceInterface.class
+nl\hu\iac\wsinterface\ObjectFactory.class
+nl\hu\iac\wsinterface\MeanRequest.class
+nl\hu\iac\wsinterface\MeanServiceService.class
+nl\hu\iac\wsmean\SchemaValErrorHandler.class
+nl\hu\iac\wsinterface\MeanFault.class
+nl\hu\iac\wsinterface\MeanResponse.class
+nl\hu\iac\wsmean\MeanServiceImpl.class

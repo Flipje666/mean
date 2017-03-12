@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://nl.hu.iac/meanservice/fault" 
+	elementFormDefault="qualified" 
+	targetNamespace="http://nl.hu.iac/meanservice/fault">
+	<xs:element name="meanFault">
+		<xs:complexType>
+			<xs:annotation>
+					<xs:documentation>message is niet voor de gebruiker, kan ook null zijn</xs:documentation>
+				</xs:annotation>
+			<xs:sequence>
+				<xs:element name="errorCode" nillable="false" type="xs:short"/>
+
+				<xs:element maxOccurs="1" minOccurs="0" name="message" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
